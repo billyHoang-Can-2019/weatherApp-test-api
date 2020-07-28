@@ -12,6 +12,9 @@ const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 const fetch = require("node-fetch");
 
+require('dotenv').config({path:"./config/keys.env"});//load environment vars
+
+
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
@@ -100,6 +103,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(process.env.port, () => {
     console.log('Server is up on port 3000.')
 })
